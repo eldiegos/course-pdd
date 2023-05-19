@@ -50,7 +50,7 @@
 
 
 	<modules>
-		<module>camunda</module>
+		<module>camunda-engine</module>
 		<module>processes</module>
 	</modules>
 
