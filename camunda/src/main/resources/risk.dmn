@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="CALCULATE_RISK_DRD" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.5.1">
+  <decision id="CALCULATE_RISK_DMN" name="calculate risk">
+    <informationRequirement id="InformationRequirement_1ikfw23">
+      <requiredInput href="#weather" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1em2ydr">
+      <requiredInput href="#temp" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0oybnvj">
+      <input id="InputClause_0k9koyv" label="Client 1 Age" biodi:width="192" camunda:inputVariable="client1.age">
+        <inputExpression id="LiteralExpression_0xpb1sd" typeRef="integer">
+          <text>client1.age</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1qb7gze" label="Client 2 Age" camunda:inputVariable="client2.age">
+        <inputExpression id="LiteralExpression_0mp4ru3" typeRef="integer">
+          <text>client2.age</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0feqypu" label="Recomendación" name="recomendacion" typeRef="string" biodi:width="276" />
+      <rule id="DecisionRule_0jtg75x">
+        <inputEntry id="UnaryTests_0s6d251">
+          <text>&lt;60</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kbos8p">
+          <text>&lt;60</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1iv60cs">
+          <text>"low"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_03nhl1j">
+        <inputEntry id="UnaryTests_1rgd0li">
+          <text>&lt;60</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0x45mhm">
+          <text>&gt;=60</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qx2ox4">
+          <text>"low"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0n1mpfc">
+        <inputEntry id="UnaryTests_1vxj10h">
+          <text>&gt;=60</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10ow54j">
+          <text>&lt;60</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0m805gw">
+          <text>"low"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0c91i3m">
+        <inputEntry id="UnaryTests_0q0e3lc">
+          <text>&gt;=60</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_166agux">
+          <text>&gt;=60</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1096oh1">
+          <text>"high"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="weather" name="client1.age" />
+  <inputData id="temp" name="client2.age" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape id="DMNShape_0q4ro20" dmnElementRef="CALCULATE_RISK_DMN">
+        <dc:Bounds height="80" width="180" x="310" y="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1hp4txu" dmnElementRef="weather">
+        <dc:Bounds height="45" width="125" x="187" y="257" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0od7pt2" dmnElementRef="InformationRequirement_1ikfw23">
+        <di:waypoint x="250" y="257" />
+        <di:waypoint x="370" y="180" />
+        <di:waypoint x="370" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_087ykbs" dmnElementRef="temp">
+        <dc:Bounds height="45" width="125" x="417" y="257" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0dw4hkd" dmnElementRef="InformationRequirement_1em2ydr">
+        <di:waypoint x="480" y="257" />
+        <di:waypoint x="430" y="180" />
+        <di:waypoint x="430" y="160" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
